@@ -1,11 +1,13 @@
-//Store data in useState
+//On mount, fetch data from: https://course-api.com/react-tours-project
+
 import React, { useEffect, useState } from "react";
 import TourCard from "./TourCard";
 
+//Store data in useState
 const Gallery = () => {
     const [tours, setTours] = useState([]);
 
-    // Use useEffect to call the API
+    //Use useEffect to call the API
     useEffect(() => {
         const fetchTours = async () => {
             try {
@@ -16,10 +18,11 @@ const Gallery = () => {
                 console.error('Error fetching tours:', error);
             }
         };
-        // Call the fetch function
+
         fetchTours();
     }, []);
 
+    //Render each tour using map() with a unique key prop
     return (
         <div>
             {tours.map((tour) => (
