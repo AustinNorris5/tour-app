@@ -1,5 +1,3 @@
-//On mount, fetch data from: https://course-api.com/react-tours-project
-
 import React, { useEffect, useState } from "react";
 import TourCard from "./TourCard";
 
@@ -12,17 +10,29 @@ const Gallery = () => {
         const fetchTours = async () => {
             try {
                 const response = await fetch('https://course-api.com/react-tours-project');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch tours');
+                }
                 const data = await response.json();
                 setTours(data);
             } catch (error) {
-                console.error('Error fetching tours:', error);
+                setError(error.message); // Set error message
+            } finally {
+                setLoading(false); // Stop loading
             }
         };
 
         fetchTours();
     }, []);
 
-    //Render each tour using map() with a unique key prop
+    if (loading) {
+        return <div>Loading...</div>; // Display loading message
+    }
+
+    if (error) {
+        return <div>Error: {error}</div>; // Display error message
+    }
+
     return (
         <div>
             {tours.map((tour) => (
