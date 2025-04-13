@@ -9,7 +9,7 @@ const Gallery = ({ setTours }) => {
     // Function to fetch tours from the API
     const fetchTours = async () => {
         try {
-            const response = await fetch("https://www.course-api.com/react-tours-project");
+            const response = await fetch("https://course-api.com/react-tours-project");
             
             // Map the data to extract required fields
             const trimmed = data.map((tour) => ({

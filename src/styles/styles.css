@@ -50,7 +50,7 @@
     padding: 10px 20px;
     font-size: 1rem;
     font-weight: bold;
-    color: #ffffff;
+    color: #fff;
     background-color: #2a9d8f;
     border: none;
     border-radius: 4px;
@@ -67,7 +67,8 @@
 /* Responsive styles */
 @media (max-width: 768px) {
     .tour-card {
-        margin: 12px;
+        margin: 16px auto;
+        max-width: 90%;
     }
 
     .tour-card-title {
@@ -90,15 +91,16 @@
 
 @media (max-width: 480px) {
     .tour-card {
-        margin: 8px;
+        margin: 8px auto;
+        max-width: 95%;
     }
 
     .tour-card-title {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 
     .tour-card-description {
-        font-size: 0.8rem;
+        font-size: 0.85rem;
     }
 
     .tour-card-price {
@@ -106,7 +108,7 @@
     }
 
     .tour-card-button {
-        font-size: 0.8rem;
+        font-size: 0.85rem;
         padding: 6px 12px;
     }
 }
