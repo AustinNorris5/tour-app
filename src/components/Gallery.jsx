@@ -54,7 +54,7 @@ const Gallery = ({ setTours }) => {
     
     //Render list of TourCards
    return (
-        <section tourName="tour-list">
+        <section tourName="Gallery">
             {tours.map((tour) => (
                 <TourCard
                     key={tour.id}
