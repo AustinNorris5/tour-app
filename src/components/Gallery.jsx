@@ -45,6 +45,13 @@ const Gallery = ({ setTours }) => {
         setSelectedDestination(event.target.value);
     };
 
+    // Handle refresh button click
+    const handleRefresh = () => {
+        setLoading(true);
+        setError(false);
+        fetchTours();
+    };
+
     // Filter tours based on selected destination
     const filteredTours = selectedDestination === "All Destinations"
         ? tours
@@ -55,6 +62,16 @@ const Gallery = ({ setTours }) => {
         const updatedTours = tours.filter((tour) => tour.id !== id);
         setLocalTours(updatedTours);
     };
+
+    // Conditional rendering for no tours
+    if (tours.length === 0 && !loading && !error) {
+        return (
+            <div>
+                <p>No tours left. Refresh to reload.</p>
+                <button onClick={handleRefresh}>Refresh</button>
+            </div>
+        );
+    }
 
     // Render loading
     if (loading) {

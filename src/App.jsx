@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Gallery from './components/Gallery';
+import DestinationSelector from './components/DestinationSelector';
 
 // Root component of the app
 function App() {
@@ -7,6 +8,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [filtering, setFiltering] = useState(false);
+  const [selectedDestination, setSelectedDestination] = useState('');
 
   // Fetch tours from API
   useEffect(() => {
@@ -34,8 +36,20 @@ function App() {
     setTours(tours.filter((tour) => tour.id !== id));
   };
 
+  const handleDestinationChange = (destination) => {
+    setSelectedDestination(destination);
+  };
+
   return (
     <main>
+      <h1>Tour Selector</h1>
+      <DestinationSelector
+        tours={tours}
+        onDestinationChange={handleDestinationChange}
+      />
+      {selectedDestination && (
+        <p>You have selected: {selectedDestination}</p>
+      )}
       <h1>Tours</h1>
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
