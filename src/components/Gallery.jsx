@@ -50,6 +50,12 @@ const Gallery = ({ setTours }) => {
         ? tours
         : tours.filter((tour) => tour.name === selectedDestination);
 
+    // Remove a tour from the gallery
+    const handleRemoveTour = (id) => {
+        const updatedTours = tours.filter((tour) => tour.id !== id);
+        setLocalTours(updatedTours);
+    };
+
     // Render loading
     if (loading) {
         return <p>Loading...</p>;
@@ -74,7 +80,11 @@ const Gallery = ({ setTours }) => {
             {/* Render tours */}
             <div className="gallery">
                 {filteredTours.map((tour) => (
-                    <TourCard key={tour.id} tour={tour} />
+                    <TourCard 
+                        key={tour.id} 
+                        tour={tour} 
+                        onRemove={() => handleRemoveTour(tour.id)} 
+                    />
                 ))}
             </div>
         </div>
